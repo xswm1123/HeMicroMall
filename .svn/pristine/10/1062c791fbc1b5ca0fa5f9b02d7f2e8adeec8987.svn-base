@@ -1,0 +1,42 @@
+//
+//  DynamicLaunchViewController.m
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/5/6.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import "DynamicLaunchViewController.h"
+
+@interface DynamicLaunchViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageIV;
+
+@end
+
+@implementation DynamicLaunchViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString* docPath=[NSString stringWithFormat:@"%@/1.jpg",path];
+    NSLog(@"docPath:%@",docPath);
+    self.imageIV.image=[UIImage imageWithContentsOfFile:docPath];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

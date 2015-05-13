@@ -1,0 +1,62 @@
+//
+//  ReadyPickUpViewController.m
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/11.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import "ReadyPickUpViewController.h"
+#import "shareValue.h"
+@interface ReadyPickUpViewController ()
+
+@end
+
+@implementation ReadyPickUpViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+//    CGRect frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    
+    
+//    WKWebView* indexWeb=[[WKWebView alloc]initWithFrame:frame];
+    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:URL_READY_PICK_UP] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
+    if (self.webView) {
+        [self.webView loadRequest:request];
+        [self.view addSubview:self.webView];
+    }
+    if (self.uiWebView) {
+        [self.uiWebView loadRequest:request];
+        [self.view addSubview:self.uiWebView];
+    }
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:URL_READY_PICK_UP] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
+    if (self.webView) {
+        [self.webView loadRequest:request];
+        
+    }
+    if (self.uiWebView) {
+        [self.uiWebView loadRequest:request];
+        
+    }
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

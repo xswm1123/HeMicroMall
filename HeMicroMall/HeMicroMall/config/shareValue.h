@@ -1,0 +1,79 @@
+//
+//  shareValue.h
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/4.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "BNUserInfo.h"
+#import "KeychainItemWrapper.h"
+#import "SSKeychain.h"
+#import <CoreLocation/CoreLocation.h>
+#define VERSION 1
+
+#define TABLEVERION 1.3
+
+#define NOTIFICATION_SELECTPRODUCT_FIN @"NOTIFICATION_SELECTPRODUCT_FIN"
+#define NOTIFICATION_SELECT_FIN @"NOTIFICATION_SELECT_FIN"
+
+#define NOTIFICATION_OFFLINESENDSUCCESS @"NOTIFICATION_OFFLINESENDSUCCESS"
+#define NOTIFICATION_VISTILEAVE @"NOTIFICATION_VISTILEAVE"
+
+
+#define NumberAndCharacters @"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n" // 限制字符和数字
+
+#define MCOLOR_GREEN HEX_RGB(0x4cd964)
+#define MCOLOR_BLUE HEX_RGB(0x409BE4)
+#define MCOLOR_ORGLE HEX_RGB(0xffd599)
+#define MCOLOR_BLACK HEX_RGB(0x000000)
+#define MCOLOR_GRAY  HEX_RGB(0x9ba6ae)
+#define MCOLOR_ORGLE HEX_RGB(0xffd599)
+#define MCOLOR_RED   HEX_RGB(0xf33D3A)
+
+#define IMG_BTN_BLUE [[UIImage imageNamed:@"CommonBtn_nor"]resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]
+
+#define IMG_BTN_BLUE_S [[UIImage imageNamed:@"CommonBtn_press"]resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]
+
+#define IMG_BTN_BLUE_D [[UIImage imageNamed:@"CommonBtn_disable"]resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]
+
+#define IMG_BTN_ORGLE [[UIImage imageNamed:@"bg_BtnLogin_nor"]resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]
+
+#define IMG_BTN_ORGLE_S [[UIImage imageNamed:@"bg_BtnLogin_press"]resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]
+
+/**
+ *  输入类文本标题的颜色设置
+ */
+#define COLOR_INPUT_TITLE       HEX_RGB(0x939a9d)
+#define FONT_SIZE_INPUT_TITLE   15.f
+#define COLOR_INPUT_CONTENT     HEX_RGB(0x000000)
+#define FONT_SIZE_INPUT_CONTENT 13.f
+#define COLOR_DETAIL_CONTENT    HEX_RGB(0x5C6871)
+#define FONT_SIZE_DETAIL_CONTENT 15.f
+
+#define DEFAULT_OFFLINE_MESSAGE_REPORT @"当前网络不佳,已转为离线上报"
+#define DEFAULT_OFFLINE_MESSAGE_QUERY  @"网络不稳定,当前显示离线数据"
+
+@interface shareValue : NSObject
++(shareValue *)shareInstance;
+
+@property(nonatomic,strong) BNUserInfo *userInfo;
+
+
+@property(nonatomic,assign) CLLocationCoordinate2D currentLocation;//当前经纬度
+@property(nonatomic,strong) NSString *address;//当前地址
+@property  (nonatomic,strong) NSString * PIID;//piid
+@property (nonatomic,strong) NSString * TOKEN; //token
+@property (nonatomic,strong) NSString  * CHANNEL;//渠道
+@property (nonatomic,strong) NSString *LOGIN_TYPE;//登陆类型
+@property (nonatomic,strong) NSString * VERSIONID;//版本号
+@property(nonatomic,strong) NSString *displayVersion;//展现的版本号
+@property(nonatomic,strong) NSString* lastUpdateTime;//最近一次更新时间
+@property(nonatomic,strong) NSString* updateURL;//更新地址
+
+@property(nonatomic,strong) NSString* phoneNumber;//用户手机号
+@property(nonatomic,strong) NSString* productNum;//产品唯一标识符
+@property(nonatomic,strong) NSString* attchId;//启动页面图片更新标识
+@property(nonatomic,strong) NSString* deviceToken;//APNs 推送
+@end

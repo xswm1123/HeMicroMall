@@ -1,0 +1,41 @@
+//
+//  QRCodeResultPageViewController.m
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/13.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import "QRCodeResultPageViewController.h"
+#import "shareValue.h"
+
+@interface QRCodeResultPageViewController ()
+
+@end
+
+@implementation QRCodeResultPageViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self createWebView];
+    NSLog(@"self.piid=%@",self.piid);
+}
+
+-(void)createWebView{
+
+//    NSString* url=[NSString stringWithFormat:@"http://202.101.116.65/api/mobile/store/goShop.action?piId=%@&token=%@&channel=1002&versionId=%@",self.piid,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID];
+    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:URL_QRCODE_RESULT_PAGE] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
+    if (self.webView) {
+        [self.webView loadRequest:request];
+        [self.view addSubview:self.webView];
+    }
+    if (self.uiWebView) {
+        [self.uiWebView loadRequest:request];
+        [self.view addSubview:self.uiWebView];
+    }
+
+}
+
+
+
+@end

@@ -1,0 +1,80 @@
+//
+//  SystemHttpRequest.m
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/4.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import "SystemHttpRequest.h"
+#import "shareValue.h"
+
+@implementation GetCheckMessageRequest
+-(id)init{
+    if (self=[super init]) {
+        _channel=[[shareValue shareInstance].CHANNEL integerValue];
+        
+    }
+    return self;
+}
+
+@end
+@implementation RegisterRequest
+
+@end
+@implementation LoginRequest
+-(id)init{
+    if (self=[super init]) {
+        _channel=[[shareValue shareInstance].CHANNEL integerValue];
+        _loginType=[[shareValue shareInstance].LOGIN_TYPE integerValue];
+    }
+    return self;
+}
+
+@end
+@implementation LoginAndScanQRCodeRequest
+-(id)init{
+    if (self=[super init]) {
+        _channel=[[shareValue shareInstance].CHANNEL integerValue];
+        _token=[shareValue shareInstance].TOKEN;
+    }
+    return self;
+}
+
+
+@end
+@implementation UpdateNewVersionRequest
+-(id)init{
+    if (self=[super init]) {
+        _downloadChannel=1002;
+    }
+    return self;
+}
+@end
+@implementation GiveAdvicesRequest
+-(id)init{
+    if (self=[super init]) {
+        _channel=[[shareValue shareInstance].CHANNEL integerValue];
+        _token=[shareValue shareInstance].TOKEN;
+    }
+    return self;
+}
+@end
+@implementation UserCenterRequest
+-(id)init{
+    if (self=[super init]) {
+        _token=[shareValue shareInstance].TOKEN;
+    }
+    return self;
+}
+@end
+@implementation AdvertisingContentRequest
+-(id)init{
+    if (self=[super init]) {
+        _channel=[[shareValue shareInstance].CHANNEL integerValue];
+//        _piId=[shareValue shareInstance].PIID;
+        _busCode=[shareValue shareInstance].CHANNEL;
+    }
+    return self;
+}
+@end

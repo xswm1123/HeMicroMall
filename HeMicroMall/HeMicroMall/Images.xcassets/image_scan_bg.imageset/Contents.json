@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 74,
+          "height" : 72
+        },
+        "capInsets" : {
+          "bottom" : 77,
+          "top" : 60,
+          "right" : 64,
+          "left" : 109
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "image_scan_bg.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

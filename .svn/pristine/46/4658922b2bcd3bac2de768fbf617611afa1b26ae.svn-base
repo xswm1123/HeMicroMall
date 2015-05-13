@@ -1,0 +1,22 @@
+//
+//  TempWebViewViewController.h
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/3/15.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "shareValue.h"
+#import "ServerConfig.h"
+#import <WebKit/WebKit.h>
+#import "MBProgressHUD+Add.h"
+#import "MBProgressHUD.h"
+#import "KINWebBrowserViewController.h"
+#import "WebViewJavascriptBridge.h"
+@interface TempWebViewViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate,WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UIWebViewDelegate>
+@property(nonatomic,strong)WKWebView * webView;
+@property(nonatomic,strong)UIWebView * uiWebView;
+@property(nonatomic,strong) NSURLRequest * request;
+@property(nonatomic,strong)NSString* URLString;
+@end

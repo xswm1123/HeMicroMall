@@ -1,0 +1,91 @@
+//
+//  BaseViewController.h
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/16.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "shareValue.h"
+#import "ServerConfig.h"
+#import <WebKit/WebKit.h>
+#import "MBProgressHUD+Add.h"
+#import "MBProgressHUD.h"
+#import "JSONKit.h"
+#import "SystemAPI.h"
+#import "SystemHttpRequest.h"
+#import "SystemHttpResponse.h"
+#import "KINWebBrowserViewController.h"
+#import "WebViewJavascriptBridge.h"
+#import "TempWebViewViewController.h"
+#import "SRRefreshView.h"
+#import "EGORefreshTableHeaderView.h"
+#import "UMSocial.h"
+#import "GetIPAddress.h"
+/*
+ 所有地址的宏定义，采用拼接的方式
+ 
+ */
+
+//首页
+#define URL_INDEX [NSString stringWithFormat:@"%@api/mobile/store/goShop.action?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//商品分类
+#define URL_CATEGORIE [NSString stringWithFormat:@"%@api/mobile/goodsspecs/getLabelListPage.shtml?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//购物车
+#define URL_SHOPBOX [NSString stringWithFormat:@"%@api/mobile/shopCart/showCartShop.shtml?piId=%@&token=%@&channel=1001&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//身边和品会
+//1、有经纬度和PIID
+#define URL_HPH_AROUND [NSString stringWithFormat:@"%@api/mobile/nearbystore/queryNearbyStore.shtml?piId=%@&token=%@&channel=1002&versionId=%@&longitude=%f&latitude=%f",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID,[shareValue shareInstance].currentLocation.longitude,[shareValue shareInstance].currentLocation.latitude]
+//2、有经纬度，没有PIID
+#define URL_HPH_AROUND_NO_PIID [NSString stringWithFormat:@"%@api/mobile/nearbystore/queryNearbyStore.shtml?piId=&token=%@&channel=1002&versionId=%@&longitude=%f&latitude=%f",BASE_SERVERLURL,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID,[shareValue shareInstance].currentLocation.longitude,[shareValue shareInstance].currentLocation.latitude]
+//3、无经纬度，有PIID Coordinate
+#define URL_HPH_AROUND_NO_COORDINATE [NSString stringWithFormat:@"%@api/mobile/nearbystore/queryNearbyStore.shtml?piId=%@&token=%@&channel=1002&versionId=%@&longitude=4.9E-324&latitude=4.9E-324",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//4、无经纬度，无PIID
+#define URL_HPH_AROUND_NO_PIID_NO_COORDINATE [NSString stringWithFormat:@"%@api/mobile/nearbystore/queryNearbyStore.shtml?piId=&token=%@&channel=1002&versionId=%@&longitude=4.9E-324&latitude=4.9E-324",BASE_SERVERLURL,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//优惠活动
+#define URL_DISCOUNT_ACTIVITY [NSString stringWithFormat:@"%@api/mobile/goodsspecs/findGoodsListPage.shtml?piId=%@&token=%@&channel=1002&versionId=%@&labelCode=YOUHUI_%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID,[shareValue shareInstance].PIID]
+//收藏的商品
+#define URL_COLLECTION_GOODS [NSString stringWithFormat:@"%@api/mobile/collection/queryCollection.shtml?piId=%@&token=%@&channel=1002&versionId=%@&showType=goods",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//收藏的店铺
+#define URL_COLLECTION_STORES [NSString stringWithFormat:@"%@api/mobile/collection/queryCollection.shtml?piId=%@&token=%@&channel=1002&versionId=%@&showType=store",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//我的足迹
+#define URL_FOOT_PRINTS [NSString stringWithFormat:@"%@api/mobile/browse/queryBrowseList.shtml?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//待付款
+#define URL_PEND_PAYMENT [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@&action=DDFK",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//待发货
+#define URL_READY_DELIVERY [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@&action=DDFH",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//待收货
+#define URL_READY_RECIVE [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@&action=DDSH",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//待自提
+#define URL_READY_PICK_UP [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@&action=DDMJSMZT",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//待评论
+#define URL_READY_COMMENT [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@&action=JYCG",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//我的订单
+#define URL_MY_ORDER [NSString stringWithFormat:@"%@api/mobile/userCenter/center.shtml?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//物流查询
+//地址管理
+#define URL_ADDRESS_MANAGER [NSString stringWithFormat:@"%@api/mobile/address/queryAddress.shtml?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//我的消息
+//广告查询
+//门店店员号码绑定
+#define URL_BLIND [NSString stringWithFormat:@"%@/api/mobile/bind/bindPage.shtml?token=%@",BASE_SERVERLURL,[shareValue shareInstance].TOKEN] //门店店员号码绑定
+//输入验证码
+#define URL_INPUT_CODE [NSString stringWithFormat:@"%@/api/mobile/activity/share/inputPage.shtml?token=%@",BASE_SERVERLURL,[shareValue shareInstance].TOKEN] 
+//二维码扫描结果店铺页面URL
+#define URL_QRCODE_RESULT_PAGE [NSString stringWithFormat:@"%@api/mobile/store/goShop.action?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+//二维码扫描结果商品页面URL
+//#define URL_QRCODE_RESULT_PAGE [NSString stringWithFormat:@"%@api/mobile/store/goShop.action?piId=%@&token=%@&channel=1002&versionId=%@",BASE_SERVERLURL,[shareValue shareInstance].PIID,[shareValue shareInstance].TOKEN,[shareValue shareInstance].VERSIONID]
+
+#define UmengAppkey @"55272ee8fd98c5f4db000fab"
+@interface BaseViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate,WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UIWebViewDelegate,SRRefreshDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
+@property(nonatomic,strong)WKWebView * webView;
+@property(nonatomic,strong)UIWebView * uiWebView;
+//@property(nonatomic,strong)CLLocationManager* locationManager;
+@property(nonatomic,strong)SRRefreshView *m_refreshView;
+@property(nonatomic,strong) EGORefreshTableHeaderView *m_refreshDownView;
+@property(nonatomic)BOOL m_reloading;
+
++(BaseViewController*)shareInstance;
+-(void)createNewTempWebViewWithURLRequest:(NSURLRequest*)request;
+@end

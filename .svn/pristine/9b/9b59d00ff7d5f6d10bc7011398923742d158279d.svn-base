@@ -1,0 +1,25 @@
+//
+//  SystemAPI.h
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/4.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "SystemHttpRequest.h"
+#import "SystemHttpResponse.h"
+@interface SystemAPI : NSObject
++(void)getCheckMessageRequest:(GetCheckMessageRequest *)request success:(void(^)(GetCheckMessageResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)RegisterRequest:(RegisterRequest *)request success:(void(^)(RegisterResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)LoginRequest:(LoginRequest *)request success:(void(^)(LoginResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)LoginAndScanQRCodeRequest:(LoginAndScanQRCodeRequest *)request success:(void(^)(LoginAndScanQRCodeResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)UpdateNewVersionRequest:(UpdateNewVersionRequest *)request success:(void(^)(UpdateNewVersionResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)GiveAdvicesMessageRequest:(GiveAdvicesRequest *)request success:(void(^)(GiveAdvicesResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)UserCenterMessageRequest:(UserCenterRequest *)request success:(void(^)(UserCenterResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)AdvertisingContentRequest:(AdvertisingContentRequest *)request success:(void(^)(AdvertisingContentResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)ShareContentRequest:(ShareContentRequest*) request uccess:(void(^)(ShareContentResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)LaunchAdsContentRequest:(LaunchAdsContentRequest*) request success:(void(^)(LaunchAdsContentResponse *response))success fail:(void(^)(BOOL notReachable,NSString *desciption))fail;
++(void)GetCutomerCenterMenusRequest:(GetCutomerCenterMenusRequest*)request success:(void(^)(GetCutomerCenterMenusResponse* response))success fail:(void(^)(BOOL notReachable,NSString* desciption)) fail;
++(void)SubmmitGetuiCIDRequest:(SubmmitGetuiCIDRequest*)request success:(void(^)(SubmmitGetuiCIDResponse* response))success fail:(void(^)(BOOL notReachable,NSString* desciption)) fail;
+@end

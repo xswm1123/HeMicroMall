@@ -1,0 +1,204 @@
+//
+//  AppDelegate.m
+//  HeMicroMall
+//
+//  Created by NewDoone on 15/2/4.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "SystemAPI.h"
+#import "SystemHttpRequest.h"
+#import "SystemHttpResponse.h"
+#import "shareValue.h"
+#import "ServerConfig.h"
+#import "GuideViewController.h"
+#import "ViewController.h"
+#import "RootNavigationController.h"
+
+@interface AppDelegate ()<UIAlertViewDelegate>
+@property(nonatomic,strong) NSString *versionID;
+@property(nonatomic,strong) NSString* lastVersionID;
+@property(nonatomic,strong) NSString* updateInfo;
+@property (nonatomic) BOOL isFirstRun;
+@end
+
+@implementation AppDelegate
+@synthesize managerLocate;
+@synthesize tabBarController;
+@synthesize isFirstRun;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+//    [shareValue shareInstance].VERSIONID=@"1";
+    [self getLocateAuthorization];
+   
+    self.lastVersionID=[shareValue shareInstance].VERSIONID;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self showLoginView];
+    [self checkUpdateState];
+    
+    [self.window makeKeyAndVisible];
+    return YES;
+    
+}
+-(void)getLocateAuthorization
+{
+    if (IOS8_OR_LATER && managerLocate==nil)
+    {
+        managerLocate=[[CLLocationManager alloc]init];
+        [managerLocate requestWhenInUseAuthorization];
+    }else{
+    managerLocate=[[CLLocationManager alloc]init];
+    [managerLocate startUpdatingLocation];
+    }
+}
+
+-(void)checkUpdateState{
+    UpdateNewVersionRequest* request=[[UpdateNewVersionRequest alloc]init];
+    [SystemAPI UpdateNewVersionRequest:request success:^(UpdateNewVersionResponse *response) {
+        NSLog(@"请求成功！");
+        NSLog(@"retMsg:%@,versionID:%ld,minVersionID:%lu,updateUrl:%@,appName:%@,description:%@,lastUpdateTime:%@",response.retMsg,(unsigned long)response.versionid,(unsigned long)response.minVersionid,response.url, response.name,response.summary,response.createtime);
+        self.updateInfo=response.summary;
+        self.versionID=[NSString stringWithFormat:@"%lu",(unsigned long)response.versionid];
+        [shareValue shareInstance].updateURL=response.url;
+        NSString* message=response.summary;
+        if (response.minVersionid>[[shareValue shareInstance].VERSIONID integerValue]) {
+            
+            UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"版本需要更新" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            al.tag=100;
+            [al show];
+            
+        }else if ([[shareValue shareInstance].VERSIONID integerValue]<response.versionid&&response.minVersionid<[[shareValue shareInstance].VERSIONID integerValue]){
+           
+            UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"版本需要更新" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            al.tag=101;
+            [al show];
+        }
+//        if (isFirstRun) {
+//            UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"更新内容" message:self.updateInfo delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+//            [al show];
+//        }
+    } fail:^(BOOL notReachable, NSString *desciption) {
+         NSLog(@"请求失败！");
+        NSLog(@"%@",desciption);
+    }];
+    
+    
+}
+-(void)downloadFromDoone
+{
+    
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:nil]];
+        [self exitApplication];
+    
+}
+-(void)showLoginView{
+    NSString *key = (NSString *)kCFBundleVersionKey;
+    //取出上次使用的版本号
+    NSString *lastVersionCode = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    //加载程序中的info.plist
+    NSString *currentVersionCode = [NSBundle mainBundle].infoDictionary[key];
+    [shareValue shareInstance].displayVersion=currentVersionCode;
+    NSLog(@"version:%@",[shareValue shareInstance].displayVersion);
+    NSLog(@"versionID:%@",[shareValue shareInstance].VERSIONID);
+    if ([lastVersionCode isEqualToString:currentVersionCode])
+    {
+        //非第一次启动
+        isFirstRun=NO;
+        if ([shareValue shareInstance].TOKEN) {
+            UIStoryboard * sb=[UIStoryboard storyboardWithName:@"index" bundle:nil];
+            self.window.rootViewController=[sb instantiateInitialViewController];
+        }else{
+            UIStoryboard* storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            self.window.rootViewController=[storyBoard instantiateInitialViewController];
+        }
+        
+    }
+    else
+    {
+        //第一次启动
+        //保存当前版本号
+        isFirstRun=YES;
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersionCode forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        UIStoryboard* sb=[UIStoryboard storyboardWithName:@"guide" bundle:nil];
+        self.window.rootViewController=[sb instantiateInitialViewController];
+    }
+
+
+}
+
+-(void)showLoginViewController{
+    UIStoryboard* sb=[UIStoryboard storyboardWithName:@"login" bundle:nil];
+    UIViewController* vc=[sb instantiateViewControllerWithIdentifier:@"login"];
+    GuideViewController* GC=[[GuideViewController alloc]init];
+    [GC presentViewController:vc animated:YES completion:nil];
+}
+
+// 退出程序
+- (void)exitApplication
+{
+    UIWindow *window =  [UIApplication sharedApplication].delegate.window;
+    [UIView animateWithDuration:0.5f animations:^
+     {
+         window.alpha = 0;
+         window.frame = CGRectMake(CGRectGetWidth(window.frame)/2,CGRectGetHeight(window.frame)/2,1, 1);
+     }
+                     completion:^(BOOL finished)
+     {
+         exit(0);
+     }];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==100) {
+    if (buttonIndex==1) {
+
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_UPDATING_APP]];
+        [self exitApplication];
+    }
+    if (buttonIndex==0) {
+        exit(0);
+    }
+    }
+    
+    if (alertView.tag==101) {
+        if (buttonIndex==0) {
+           
+        }
+        if (buttonIndex==1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_UPDATING_APP]];
+            [self exitApplication];
+        }
+
+    }
+
+}
+
+-(void)hiddenTabBar{
+//    [tabBarController setHidesBottomBarWhenPushed:YES];
+    tabBarController.tabBar.hidden=YES;
+}
+- (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"applicationWillResignActive");
+     [self checkUpdateState];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+@end
