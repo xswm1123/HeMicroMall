@@ -1561,11 +1561,11 @@
         <image name="scan_code_bg.png" width="115" height="115"/>
         <image name="score.png" width="50" height="50"/>
         <image name="send.png" width="50" height="50"/>
-        <image name="tab_categrioe.png" width="26" height="26"/>
-        <image name="tab_discovery.png" width="26" height="26"/>
-        <image name="tab_index.png" width="26" height="26"/>
-        <image name="tab_mine.png" width="26" height="26"/>
-        <image name="tab_shoppingBox.png" width="26" height="26"/>
+        <image name="tab_categrioe.png" width="30" height="30"/>
+        <image name="tab_discovery.png" width="30" height="30"/>
+        <image name="tab_index.png" width="30" height="30"/>
+        <image name="tab_mine.png" width="30" height="30"/>
+        <image name="tab_shoppingBox.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1N8-sz-Nbr"/>

@@ -19,13 +19,11 @@
 //测试环境
 //#define BASE_SERVERLURL @"http://202.101.116.65/"
 //生产环境
-#define BASE_SERVERLURL @"http://218.205.252.26:9003/"
-//本地环境--两本书
-//#define BASE_SERVERLURL @"http://192.168.88.13:8060/"
+//#define BASE_SERVERLURL @"http://218.205.252.26:9003/"
 //业支测试环境
-//#define BASE_SERVERLURL @"http://218.205.252.22"
+//#define BASE_SERVERLURL @"http://218.205.252.22/"
 //业支预上线环境
-//#define BASE_SERVERLURL @"http://218.205.252.26"
+#define BASE_SERVERLURL @"http://218.205.252.26/"
 
 
 //// 图片上传路径

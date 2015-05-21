@@ -90,6 +90,7 @@ static BaseViewController* _bvc;
                 //打开登录界面
                 UIStoryboard * sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 UIViewController* vc=[sb instantiateInitialViewController];
+                [shareValue shareInstance].TOKEN=@"";
                 [self presentViewController:vc animated:YES completion:nil];
             }
             
@@ -169,9 +170,7 @@ static BaseViewController* _bvc;
         isEnd=YES;
     }
     if (alertView.tag==1005) {
-//        UIStoryboard * sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        UIViewController* vc=[sb instantiateInitialViewController];
-//        [self presentViewController:vc animated:YES completion:nil];
+
     }
     
 }
@@ -180,6 +179,9 @@ static BaseViewController* _bvc;
     NSLog(@"message:%@",message.body);
     NSLog(@"name:%@",message.name);
     NSString* string=message.body;
+//    NSDictionary* dic=[string objectFromJSONString];
+//    NSLog(@"dic_json:%@",dic);
+    
     NSArray* arr=[string componentsSeparatedByString:@":"];
     NSString* string_pi=[arr lastObject];
     
@@ -192,6 +194,7 @@ static BaseViewController* _bvc;
         //打开登录界面
         UIStoryboard * sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController* vc=[sb instantiateInitialViewController];
+        [shareValue shareInstance].TOKEN=@"";
         [self presentViewController:vc animated:YES completion:nil];
     }
     
@@ -215,6 +218,12 @@ static BaseViewController* _bvc;
         [al show];
     }
     if ([actionID isEqualToString:@"4"]) {
+        NSLog(@"piId_4:%@",piid);
+        //"6458"
+        NSRange range=[piid rangeOfString:@"\""];
+        if (range.length>0) {
+            piid=[piid substringWithRange:NSMakeRange(1, piid.length-2)];
+        }
         [shareValue shareInstance].PIID=piid;
     }
     
@@ -273,7 +282,7 @@ static BaseViewController* _bvc;
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     decisionHandler(WKNavigationActionPolicyAllow);
     NSLog(@"执行了decidePolicyForNavigationAction");
-//    NSLog(@"actionType====%ld",navigationAction.navigationType);
+    NSLog(@"actionType====%ld",(long)navigationAction.navigationType);
     if (navigationAction.navigationType==WKNavigationTypeLinkActivated) {
         NSLog(@"click!");
 //        NSLog(@"Request===%@",navigationAction.request.URL.absoluteString);
@@ -286,6 +295,20 @@ static BaseViewController* _bvc;
 
         }
     }
+}
+//- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler{
+//    NSLog(@"didReceiveAuthenticationChallenge");
+//    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling,);
+//}
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    NSLog(@"didCommitNavigation");
+}
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+    NSLog(@"didReceiveServerRedirectForProvisionalNavigation");
+}
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+    NSLog(@"decidePolicyForNavigationResponse");
+    decisionHandler(WKNavigationResponsePolicyAllow);
 }
 #pragma UIWebView--Delegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -301,6 +324,7 @@ static BaseViewController* _bvc;
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"navigationType:%ld",(long)navigationType);
     if (navigationType==UIWebViewNavigationTypeLinkClicked) {
         if (![self.navigationItem.title isEqualToString:@"购物车"]) {
             TempWebViewViewController* vc=[[TempWebViewViewController alloc]init];

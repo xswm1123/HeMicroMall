@@ -30,6 +30,7 @@
     [self.view addSubview:_line];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation) userInfo:nil repeats:YES];
+
 }
 -(void)animation
 {
@@ -52,29 +53,43 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:YES];
     [timer invalidate];
+    timer=nil;
     [_session stopRunning];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-//    [self setupCamera];
     [_session startRunning];
     timer=[NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation) userInfo:nil repeats:YES];
-//    [timer fire];
 }
+/**
+ *  初始化相机，准备扫描场景
+ */
 - (void)setupCamera
 {
     // Device
+    /**
+     *  初始化相机设备
+     */
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     // Input
+    /**
+     *  初始化输入
+     */
     _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
     
     // Output
+    /**
+     初始化输出
+     */
     _output = [[AVCaptureMetadataOutput alloc]init];
     [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     
     // Session
+    /**
+     初始化session
+     */
     _session = [[AVCaptureSession alloc]init];
     [_session setSessionPreset:AVCaptureSessionPresetHigh];
     if ([_session canAddInput:self.input])
@@ -88,6 +103,9 @@
     }
     
     // 条码类型 AVMetadataObjectTypeQRCode
+    /**
+     *  判断是否可以扫描，如果不可以扫描，提示用户开启相机授权。
+     */
     if (![_output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeQRCode]) {
         if (IOS8_OR_LATER) {
             UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"提示" message:@"未检测到相机开启，请前往设置中打开此应用的相机权限!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往设置", nil];
@@ -102,19 +120,32 @@
     _output.metadataObjectTypes =@[AVMetadataObjectTypeQRCode];
     }
     //设置扫描区域
+    /**
+     *  设置扫描区域，默认是全屏
+
+     *
+     */
 //    [_output setRectOfInterest:CGRectMake(self.cameraIV.frame.origin.y/self.view.frame.size.height, self.cameraIV.frame.origin.x/self.view.frame.size.width, self.cameraIV.frame.size.width/self.view.frame.size.height, self.cameraIV.frame.size.height/self.view.frame.size.width)];
     
     // Preview
+    /**
+     *  初始化一个显示扫描界面的layer
+     */
     _preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];
     _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _preview.frame =self.view.frame;
     [self.view.layer insertSublayer:self.preview atIndex:0];
-    
-    
-    
     // Start
+    /**
+     *  session执行
+     */
     [_session startRunning];
 }
+/**
+ *
+ *AVCaptureMetadataOutputObjectsDelegate
+ *
+ */
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
@@ -130,6 +161,7 @@
         stringValue = metadataObject.stringValue;
     }
     self.QRContent=stringValue;
+    NSLog(@"stringValue:%@",stringValue);
     if ([self isValidateWebSite:stringValue]) {
         NSString* saleStr=@"xwshOffermallsale/findOfferMallSaleInfo.shtml";
         NSRange range=[stringValue rangeOfString:saleStr];
@@ -209,9 +241,9 @@
     request.storeid=self.storeID.integerValue;
     [SystemAPI LoginAndScanQRCodeRequest:request success:^(LoginAndScanQRCodeResponse *response) {
         if (isBind) {
-            [shareValue shareInstance].PIID=[NSString stringWithFormat:@"%ld",(unsigned long)response.piId];
+            [shareValue shareInstance].PIID=response.piId;
         }
-        weakSelf.piid=[NSString stringWithFormat:@"%ld",(unsigned long)response.piId];
+        weakSelf.piid=response.piId;
         [timer invalidate];
         [self showResultPage];
     } fail:^(BOOL notReachable, NSString *desciption) {

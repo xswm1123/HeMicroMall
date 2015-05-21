@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0846CCAD1B09D799008FB669 /* QRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCA51B09D799008FB669 /* QRCode.png */; };
+		0846CCAE1B09D799008FB669 /* tab_categrioe.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCA61B09D799008FB669 /* tab_categrioe.png */; };
+		0846CCAF1B09D799008FB669 /* tab_discovery.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCA71B09D799008FB669 /* tab_discovery.png */; };
+		0846CCB01B09D799008FB669 /* tab_index.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCA81B09D799008FB669 /* tab_index.png */; };
+		0846CCB11B09D799008FB669 /* tab_mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCA91B09D799008FB669 /* tab_mine.png */; };
+		0846CCB21B09D799008FB669 /* tab_shoppingBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCAA1B09D799008FB669 /* tab_shoppingBox.png */; };
+		0846CCB31B09D799008FB669 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCAB1B09D799008FB669 /* line@2x.png */; };
+		0846CCB41B09D799008FB669 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0846CCAC1B09D799008FB669 /* pick_bg@2x.png */; };
 		084CD5C81B01E544001A4A1C /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 084CD5C71B01E544001A4A1C /* Launch Screen.xib */; };
 		08B573631B00AE5400C1EBB8 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B573621B00AE5400C1EBB8 /* MBProgressHUD+Add.m */; };
 		08B573691B00FA5D00C1EBB8 /* libGexinSdk-1.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B573681B00FA5D00C1EBB8 /* libGexinSdk-1.1.1.a */; };
@@ -241,6 +249,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0846CCA51B09D799008FB669 /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QRCode.png; path = "drawable-hdpi/QRCode.png"; sourceTree = "<group>"; };
+		0846CCA61B09D799008FB669 /* tab_categrioe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_categrioe.png; path = "drawable-hdpi/tab_categrioe.png"; sourceTree = "<group>"; };
+		0846CCA71B09D799008FB669 /* tab_discovery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_discovery.png; path = "drawable-hdpi/tab_discovery.png"; sourceTree = "<group>"; };
+		0846CCA81B09D799008FB669 /* tab_index.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_index.png; path = "drawable-hdpi/tab_index.png"; sourceTree = "<group>"; };
+		0846CCA91B09D799008FB669 /* tab_mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_mine.png; path = "drawable-hdpi/tab_mine.png"; sourceTree = "<group>"; };
+		0846CCAA1B09D799008FB669 /* tab_shoppingBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_shoppingBox.png; path = "drawable-hdpi/tab_shoppingBox.png"; sourceTree = "<group>"; };
+		0846CCAB1B09D799008FB669 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line@2x.png"; path = "drawable-hdpi/line@2x.png"; sourceTree = "<group>"; };
+		0846CCAC1B09D799008FB669 /* pick_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pick_bg@2x.png"; path = "drawable-hdpi/pick_bg@2x.png"; sourceTree = "<group>"; };
 		084CD5C71B01E544001A4A1C /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		08B573611B00AE5400C1EBB8 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		08B573621B00AE5400C1EBB8 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
@@ -470,11 +486,6 @@
 		CB59EFC31A8465A600340B95 /* RootTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBar.h; sourceTree = "<group>"; };
 		CB59EFC41A8465A600340B95 /* RootTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBar.m; sourceTree = "<group>"; };
 		CB59EFC61A8468A600340B95 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		CB5C91AB1A8E03EC003BEDE9 /* tab_mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_mine.png; path = "../../../../../../../Downloads/QQDownloadFiles/ios-icon-30/tab_mine.png"; sourceTree = "<group>"; };
-		CB5C91AC1A8E03EC003BEDE9 /* tab_index.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_index.png; path = "../../../../../../../Downloads/QQDownloadFiles/ios-icon-30/tab_index.png"; sourceTree = "<group>"; };
-		CB5C91AD1A8E03EC003BEDE9 /* tab_shoppingBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_shoppingBox.png; path = "../../../../../../../Downloads/QQDownloadFiles/ios-icon-30/tab_shoppingBox.png"; sourceTree = "<group>"; };
-		CB5C91AE1A8E03EC003BEDE9 /* tab_categrioe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_categrioe.png; path = "../../../../../../../Downloads/QQDownloadFiles/ios-icon-30/tab_categrioe.png"; sourceTree = "<group>"; };
-		CB5C91AF1A8E03EC003BEDE9 /* tab_discovery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_discovery.png; path = "../../../../../../../Downloads/QQDownloadFiles/ios-icon-30/tab_discovery.png"; sourceTree = "<group>"; };
 		CB66297F1AC8E6C400B07700 /* BlindAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlindAccountViewController.h; sourceTree = "<group>"; };
 		CB6629801AC8E6C400B07700 /* BlindAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlindAccountViewController.m; sourceTree = "<group>"; };
 		CB6695A91AD61FEF00A9B39E /* InputInviteCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputInviteCodeViewController.h; sourceTree = "<group>"; };
@@ -570,7 +581,6 @@
 		CB9922FC1AA9596C00DA5CF5 /* tab_discovery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_discovery@2x.png"; sourceTree = "<group>"; };
 		CB9922FD1AA9596C00DA5CF5 /* tab_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_mine@2x.png"; sourceTree = "<group>"; };
 		CB9922FE1AA9596C00DA5CF5 /* tab_shoppingBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_shoppingBox@2x.png"; sourceTree = "<group>"; };
-		CB9992A31A8C523F0079818C /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QRCode.png; path = ../../../../../../../Downloads/QQDownloadFiles/QRCode.png; sourceTree = "<group>"; };
 		CB9F0BA71A9185F2006D99BF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CB9F0BA81A9185F2006D99BF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CB9F0BAB1A91B601006D99BF /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
@@ -580,8 +590,6 @@
 		CB9F0BAF1A91B601006D99BF /* forwardbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forwardbutton@2x.png"; sourceTree = "<group>"; };
 		CB9F0BB01A91B601006D99BF /* forwardbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forwardbutton@3x.png"; sourceTree = "<group>"; };
 		CBAC82741AA06AB3007BAEC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		CBB6BA851A8A01F900D3E557 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line@2x.png"; path = "../../../../../../../Downloads/ios7 Scan QRCode/line@2x.png"; sourceTree = "<group>"; };
-		CBB6BA861A8A01F900D3E557 /* pick_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pick_bg@2x.png"; path = "../../../../../../../Downloads/ios7 Scan QRCode/pick_bg@2x.png"; sourceTree = "<group>"; };
 		CBB9DFA71AF873F600E1BA4D /* GexinSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GexinSdk.h; sourceTree = "<group>"; };
 		CBB9DFA81AF873F600E1BA4D /* GXSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXSdkError.h; sourceTree = "<group>"; };
 		CBB9DFAB1AF8745800E1BA4D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1161,15 +1169,15 @@
 				CB9922FE1AA9596C00DA5CF5 /* tab_shoppingBox@2x.png */,
 				CB9922F81AA9573200DA5CF5 /* tab_categrioe@2x.png */,
 				CB9922F91AA9573200DA5CF5 /* tab_index@2x.png */,
+				0846CCA51B09D799008FB669 /* QRCode.png */,
+				0846CCA61B09D799008FB669 /* tab_categrioe.png */,
+				0846CCA71B09D799008FB669 /* tab_discovery.png */,
+				0846CCA81B09D799008FB669 /* tab_index.png */,
+				0846CCA91B09D799008FB669 /* tab_mine.png */,
+				0846CCAA1B09D799008FB669 /* tab_shoppingBox.png */,
+				0846CCAB1B09D799008FB669 /* line@2x.png */,
+				0846CCAC1B09D799008FB669 /* pick_bg@2x.png */,
 				CB53A2311AA6ADDB0079A863 /* drawable-hdpi */,
-				CB5C91AB1A8E03EC003BEDE9 /* tab_mine.png */,
-				CB5C91AC1A8E03EC003BEDE9 /* tab_index.png */,
-				CB5C91AD1A8E03EC003BEDE9 /* tab_shoppingBox.png */,
-				CB5C91AE1A8E03EC003BEDE9 /* tab_categrioe.png */,
-				CB5C91AF1A8E03EC003BEDE9 /* tab_discovery.png */,
-				CB9992A31A8C523F0079818C /* QRCode.png */,
-				CBB6BA851A8A01F900D3E557 /* line@2x.png */,
-				CBB6BA861A8A01F900D3E557 /* pick_bg@2x.png */,
 				CBDB96E41AB024410097A9C1 /* image_scan_bg.png */,
 			);
 			path = image;
@@ -1445,6 +1453,7 @@
 			files = (
 				CB58CDFD1ABC0C7300BBDCB1 /* Icon-72.png in Resources */,
 				CB53A2B41AA6ADDB0079A863 /* toast_bg_fillet.9.png in Resources */,
+				0846CCB11B09D799008FB669 /* tab_mine.png in Resources */,
 				CB9922FF1AA9596C00DA5CF5 /* tab_discovery@2x.png in Resources */,
 				CB53A2AC1AA6ADDB0079A863 /* tab_mine_down.png in Resources */,
 				CB53A2B11AA6ADDB0079A863 /* tips_error.png in Resources */,
@@ -1477,9 +1486,11 @@
 				CB53A29C1AA6ADDB0079A863 /* scan_2dimensional_code.png in Resources */,
 				CB73002F1AB16D4600CC7201 /* WebViewJavascriptBridge.js.txt in Resources */,
 				CB53A2A31AA6ADDB0079A863 /* spinner_76_outer_holo.png in Resources */,
+				0846CCB21B09D799008FB669 /* tab_shoppingBox.png in Resources */,
 				CB9922F61AA951A000DA5CF5 /* classic_test.png in Resources */,
 				CB53A2981AA6ADDB0079A863 /* sc_00.png in Resources */,
 				CB53A2881AA6ADDB0079A863 /* mm_title_back_normal.9.PNG in Resources */,
+				0846CCB01B09D799008FB669 /* tab_index.png in Resources */,
 				CB53A2761AA6ADDB0079A863 /* checkbox_unchecked.png in Resources */,
 				CB53A2931AA6ADDB0079A863 /* progress_primary_holo_dark.9.png in Resources */,
 				CB53A2821AA6ADDB0079A863 /* logo.png in Resources */,
@@ -1494,6 +1505,7 @@
 				CB53A2901AA6ADDB0079A863 /* payment.png in Resources */,
 				CB53A29A1AA6ADDB0079A863 /* sc_02.png in Resources */,
 				CB58CE061ABC0C7300BBDCB1 /* iTunesArtwork.png in Resources */,
+				0846CCB31B09D799008FB669 /* line@2x.png in Resources */,
 				CB53A2801AA6ADDB0079A863 /* login_pwd.png in Resources */,
 				CB53A2A11AA6ADDB0079A863 /* setting_more.png in Resources */,
 				08B7DFD61B0194BD008C0C88 /* UMSLoginViewController.xib in Resources */,
@@ -1507,6 +1519,7 @@
 				CB53A2771AA6ADDB0079A863 /* edit_clear.png in Resources */,
 				CB74F15F1AC54DF000EEB8CA /* logo-488.png in Resources */,
 				CB53A29B1AA6ADDB0079A863 /* sc_03.png in Resources */,
+				0846CCAF1B09D799008FB669 /* tab_discovery.png in Resources */,
 				CB53A29D1AA6ADDB0079A863 /* scan_code_bg.png in Resources */,
 				CB53A27A1AA6ADDB0079A863 /* hot_exercise.png in Resources */,
 				CB53A2AF1AA6ADDB0079A863 /* tab_shopping_cart_up.png in Resources */,
@@ -1534,6 +1547,7 @@
 				CB53A2951AA6ADDB0079A863 /* receipt.png in Resources */,
 				CB53A2A81AA6ADDB0079A863 /* tab_find_down.png in Resources */,
 				CB53A2741AA6ADDB0079A863 /* ad_pic.png in Resources */,
+				0846CCAD1B09D799008FB669 /* QRCode.png in Resources */,
 				CB53A2A91AA6ADDB0079A863 /* tab_find_up.png in Resources */,
 				CB53A27F1AA6ADDB0079A863 /* loadingphoto.png in Resources */,
 				CB53A2B21AA6ADDB0079A863 /* title_back.png in Resources */,
@@ -1547,7 +1561,9 @@
 				CB58CE071ABC0C7300BBDCB1 /* iTunesArtwork@2x.png in Resources */,
 				CB53A2891AA6ADDB0079A863 /* mm_title_back_pressed.9.PNG in Resources */,
 				CB53A28F1AA6ADDB0079A863 /* page_indicator_unfocused.png in Resources */,
+				0846CCAE1B09D799008FB669 /* tab_categrioe.png in Resources */,
 				CB9923011AA9596C00DA5CF5 /* tab_shoppingBox@2x.png in Resources */,
+				0846CCB41B09D799008FB669 /* pick_bg@2x.png in Resources */,
 				CB53A2A41AA6ADDB0079A863 /* switch_checked.png in Resources */,
 				CB7A80ED1AF07BA00028A951 /* Icon-180@3x.png in Resources */,
 				CB53A2AD1AA6ADDB0079A863 /* tab_mine_up.png in Resources */,
@@ -1771,7 +1787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuangwei xu (2D485M58Q4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fujian NewDoone Science&Technology Co., Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1797,7 +1813,7 @@
 					"$(PROJECT_DIR)/HeMicroMall/ext/UMSocial_Sdk_4.2.2/SinaSSO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eee63698-0666-4fce-9e38-406159e5e713";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1806,7 +1822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuangwei xu (2D485M58Q4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fujian NewDoone Science&Technology Co., Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1832,7 +1848,7 @@
 					"$(PROJECT_DIR)/HeMicroMall/ext/UMSocial_Sdk_4.2.2/SinaSSO",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eee63698-0666-4fce-9e38-406159e5e713";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

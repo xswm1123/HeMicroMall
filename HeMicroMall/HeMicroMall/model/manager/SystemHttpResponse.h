@@ -23,7 +23,7 @@
 @end
 
 @interface LoginAndScanQRCodeResponse : LK_HttpBaseResponse
-@property(nonatomic,assign) NSUInteger piId;
+@property(nonatomic,strong) NSString * piId;
 
 @end
 

@@ -66,11 +66,9 @@
     NSLog(@"docPath:%@",docPath);
     imageV.image=[UIImage imageWithContentsOfFile:docPath];
     [lunchView addSubview:imageV];
-//    [lunchView bringSubviewToFront:imageV];
     [self.window addSubview:lunchView];
     [self.window bringSubviewToFront:lunchView];
      [NSThread sleepForTimeInterval:2.0];
-//    [lunchView removeFromSuperview];
 }
 
 -(void)loadLaunchImages{
@@ -99,7 +97,6 @@
     NSFileManager* fm=[NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
-//    NSString* fileName=[shareValue shareInstance].attchId;
     NSString* docPath=[NSString stringWithFormat:@"%@/1.jpg",path];
     NSLog(@"docPathFinished:%@",docPath);
     [fm moveItemAtURL:location toURL:[NSURL fileURLWithPath:docPath] error:nil];
@@ -163,10 +160,7 @@
             al.tag=101;
             [al show];
         }
-//        if (isFirstRun) {
-//            UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"更新内容" message:self.updateInfo delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-//            [al show];
-//        }
+
     } fail:^(BOOL notReachable, NSString *desciption) {
          NSLog(@"请求失败！");
         NSLog(@"%@",desciption);

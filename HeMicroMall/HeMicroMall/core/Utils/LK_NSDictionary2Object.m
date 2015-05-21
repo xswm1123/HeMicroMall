@@ -112,7 +112,7 @@
 }
 
 -(int)asInteger;{
-    return self.integerValue;
+    return (int)self.integerValue;
 }
 
 -(long)asLong;{

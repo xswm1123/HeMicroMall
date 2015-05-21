@@ -20,8 +20,8 @@
 #import "UMSocial.h"
 #define UmengAppkey @"55272ee8fd98c5f4db000fab"
 @interface TempWebViewViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate,WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler,UIWebViewDelegate>
-@property(nonatomic,strong)WKWebView * webView;
-@property(nonatomic,strong)UIWebView * uiWebView;
-@property(nonatomic,strong) NSURLRequest * request;
-@property(nonatomic,strong)NSString* URLString;
+@property (nonatomic,strong) WKWebView    * webView;
+@property (nonatomic,strong) UIWebView    * uiWebView;
+@property (nonatomic,strong) NSURLRequest * request;
+@property (nonatomic,strong) NSString     * URLString;
 @end

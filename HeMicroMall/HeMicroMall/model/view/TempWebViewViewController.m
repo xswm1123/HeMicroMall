@@ -185,9 +185,9 @@ static BOOL isEnd=NO;
         isEnd=YES;
     }
     if (alertView.tag==1005) {
-        UIStoryboard * sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController* vc=[sb instantiateInitialViewController];
-        [self presentViewController:vc animated:YES completion:nil];
+//        UIStoryboard * sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController* vc=[sb instantiateInitialViewController];
+//        [self presentViewController:vc animated:YES completion:nil];
     }
     
 }
@@ -280,7 +280,7 @@ static BOOL isEnd=NO;
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler{
     NSLog(@"ConfirmMessage:%@",message);
     UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    al.tag=1002;
+    al.tag = 1002;
     [al show];
     if (IOS7_OR_LATER) {
         while (isEnd == NO) {
@@ -291,20 +291,23 @@ static BOOL isEnd=NO;
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
         }
     }
-    isEnd = NO;
+    isEnd  = NO;
     completionHandler(confirm);
 }
+
 #pragma WKNavigationDelegate
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-//    decisionHandler(WKNavigationActionPolicyAllow);
-//    NSLog(@"执行了decidePolicyForNavigationAction");
-//    if (navigationAction.navigationType==WKNavigationTypeLinkActivated) {
-//        NSLog(@"click!");
-//        //        KINWebBrowserViewController* vc=[[KINWebBrowserViewController alloc]initWithConfiguration:config];
-//        //        [self.navigationController pushViewController:vc animated:YES];
-//        //        [vc loadURL:navigationAction.request.URL];
-//    }
-//}
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    decisionHandler(WKNavigationActionPolicyAllow);
+    NSLog(@"执行了decidePolicyForNavigationAction");
+    NSLog(@"actionType====%ld",(long)navigationAction.navigationType);
+    
+//    [self.webView evaluateJavaScript:@"toOrderDetail" completionHandler:^(id data, NSError * error) {
+//    }];
+    if (navigationAction.navigationType==WKNavigationTypeLinkActivated) {
+        NSLog(@"click!");
+     
+    }
+}
 #pragma UIWebView--Delegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     NSLog(@"UI开始加载网页！");
@@ -326,6 +329,7 @@ static BOOL isEnd=NO;
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
+
 @end
 
 

@@ -185,7 +185,8 @@ static BOOL isEnd=NO;
     NSLog(@"message:%@",message.body);
     NSLog(@"name:%@",message.name);
     NSString* string=message.body;
-    
+    NSDictionary* arrList=[string objectFromJSONString];
+    NSLog(@"dic_json:%@",arrList);
     
     NSArray* arr=[string componentsSeparatedByString:@":"];
     NSString* string_pi=[arr lastObject];

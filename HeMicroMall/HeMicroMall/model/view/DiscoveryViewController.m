@@ -265,7 +265,7 @@
        [UIView animateWithDuration:0.15 animations:^{
            self.adContent.alpha=1;
            self.adTitle.alpha=1;
-           [self loadTitleAndContentAtIndex:page];
+           [self loadTitleAndContentAtIndex:self.pageControl.currentPage];
        }];
        
    }];
@@ -307,10 +307,7 @@
     self.imv.hidden=YES;
     [self.imv removeFromSuperview];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden=NO;
     [self checkPiidState];
@@ -335,25 +332,28 @@
     [MBProgressHUD showHUDAddedTo:self.scrollView animated:YES];
     AdvertisingContentRequest* request=[[AdvertisingContentRequest alloc]init];
     [SystemAPI AdvertisingContentRequest:request success:^(AdvertisingContentResponse *response) {
-        NSLog(@"%@",response.list);
+        
         self.lists=response.list;
         if (self.lists.count>0) {
             for (NSDictionary* adList in self.lists) {
                 UIImage* image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[adList objectForKey:@"url"]]]];
+                NSLog(@"titile:%@",[adList objectForKey:@"title"]);
                 if (image) {
                     [self.images addObject:image];
                     [self.contents addObject:adList];
                     [self.totalContents addObject:adList];
                 }
-               
             }
-            [self.totalContents insertObject:[self.contents lastObject] atIndex:0];
-            [self.totalContents addObject:[self.contents firstObject]];
+//            [self.totalContents insertObject:[self.contents lastObject] atIndex:0];
+//            [self.totalContents addObject:[self.contents firstObject]];
+            for (NSDictionary* dic in self.totalContents) {
+                NSLog(@"arr_title:%@",[dic objectForKey:@"title"]);
+            }
         }
         
         if (self.images.count>0) {
             [self initViewAndLoadImages];
-            [self loadTitleAndContentAtIndex:1];
+            [self loadTitleAndContentAtIndex:0];
         }
         [MBProgressHUD hideAllHUDsForView:self.scrollView animated:YES];
     } fail:^(BOOL notReachable, NSString *desciption) {

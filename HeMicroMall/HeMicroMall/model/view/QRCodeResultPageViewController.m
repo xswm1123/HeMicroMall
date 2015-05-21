@@ -44,6 +44,21 @@
 
 }
 
-
-
+//- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler{
+//    NSLog(@"ConfirmMessage:%@",message);
+//    UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//    al.tag=1002;
+//    [al show];
+//    completionHandler(confirm);
+//}
+//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (alertView.tag==1002) {
+//        if (buttonIndex==0) {
+//            confirm=NO;
+//        }
+//        if (buttonIndex==1) {
+//            confirm=YES;
+//        }
+//    }
+//}
 @end
