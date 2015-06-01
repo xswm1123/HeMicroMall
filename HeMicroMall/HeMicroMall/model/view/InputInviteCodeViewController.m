@@ -16,13 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    ShareContentRequest* request=[[ShareContentRequest alloc]init];
-//    [SystemAPI ShareContentRequest:request uccess:^(ShareContentResponse *response) {
-//        NSLog(@"data:%@",response.shareContent);
-//        
-//    } fail:^(BOOL notReachable, NSString *desciption) {
-//        
-//    }];
+
+//    UIImage *maskImg = [UIImage imageNamed:@"图片填充斜纹"];
+//    maskImg = [maskImg resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    
+    
     NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:URL_INPUT_CODE] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     if (self.webView) {
         [self.webView loadRequest:request];

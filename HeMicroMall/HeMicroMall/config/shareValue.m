@@ -64,7 +64,7 @@ static shareValue *_shareValue;
 }
 -(NSString *)VERSIONID{
 //      return [[NSUserDefaults standardUserDefaults]stringForKey:SET_VERSIONID];
-    return @"20";
+    return @"21";
 }
 -(NSString *)LOGIN_TYPE{
     return @"52";

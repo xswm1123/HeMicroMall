@@ -9,6 +9,7 @@
 #import "ScanQRCodeViewController.h"
 #import "QRCodeResultPageViewController.h"
 #import "shareValue.h"
+#import "ServerConfig.h"
 
 @interface ScanQRCodeViewController ()<UIAlertViewDelegate>
 @property(nonatomic,strong)NSString * QRContent;
@@ -163,10 +164,14 @@
     self.QRContent=stringValue;
     NSLog(@"stringValue:%@",stringValue);
     if ([self isValidateWebSite:stringValue]) {
-        NSString* saleStr=@"xwshOffermallsale/findOfferMallSaleInfo.shtml";
+        NSString* saleStr=@"ishop/xwshOffermallsale/findOfferMallSaleInfo.shtml";
         NSRange range=[stringValue rangeOfString:saleStr];
         if (range.length>0) {
             self.piid=@"000";
+            NSString* newStr=[stringValue stringByReplacingOccurrencesOfString:saleStr withString:URL_FIND_OFFER_MALL_SALEINFO];
+            NSString* url=[NSString stringWithFormat:@"%@&token=%@&channel=1002",newStr,[shareValue shareInstance].TOKEN];
+            NSLog(@"newStr:%@",url);
+            self.QRContent=url;
             [self showResultPage];
         }else{
             NSArray* sts=[stringValue componentsSeparatedByString:@"="];
@@ -174,7 +179,6 @@
             NSLog(@"storeID=====%@",self.storeID);
             [self requestPiidAndIsBind:NO];
         }
-        
 
     }else{
         UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"提示" message:@"当前二维码非和品会二维码!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];

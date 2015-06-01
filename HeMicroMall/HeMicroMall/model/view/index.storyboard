@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAK-Gx-P7n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oAK-Gx-P7n">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--首页-->
+        <!--Index View Controller-->
         <scene sceneID="UqO-z4-wk9">
             <objects>
                 <viewController id="1xQ-9e-Czr" customClass="IndexViewController" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="kmr-Ga-Vc2"/>
+                    <navigationItem key="navigationItem" id="kmr-Ga-Vc2"/>
                     <connections>
                         <segue destination="gve-x3-GfZ" kind="push" identifier="scanQR" id="QaG-yV-1h7"/>
                     </connections>
@@ -1066,7 +1066,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="您的姓名、手机号、邮箱等" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="94G-vs-UZn">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="您的姓名、手机号、邮箱等" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="94G-vs-UZn">
                                 <rect key="frame" x="16" y="236" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9G2-OV-ZEO"/>
@@ -1074,7 +1074,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-rv-Fo9">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-rv-Fo9">
                                 <rect key="frame" x="16" y="285" width="568" height="51"/>
                                 <color key="backgroundColor" red="0.88235300780000003" green="0.0" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1568,6 +1568,6 @@
         <image name="tab_shoppingBox.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1N8-sz-Nbr"/>
+        <segue reference="QaG-yV-1h7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,9 +33,6 @@
     [backItem addTarget:self action:@selector(showScanQRCodeView) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backItem];
     self.navigationItem.leftBarButtonItem=leftItem;
-    
-    
-
     self.view.backgroundColor=[UIColor lightGrayColor];
     self.tabBarController.tabBar.backgroundColor=[UIColor whiteColor];
 }
@@ -52,6 +49,13 @@
         [self.uiWebView loadRequest:request];
         [self.view addSubview:self.uiWebView];
     }
+    if(self.webView) {
+        self.navigationItem.title = self.webView.title;
+    }
+    else if(self.uiWebView) {
+        self.navigationItem.title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -67,7 +71,13 @@
     if ([[shareValue shareInstance].PIID isEqualToString:@""]) {
         self.tabBarController.selectedIndex=2;
     }
-    
+    if(self.webView) {
+        self.navigationItem.title = self.webView.title;
+    }
+    else if(self.uiWebView) {
+        self.navigationItem.title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+
 }
 -(void)showScanQRCodeView{
     self.tabBarController.tabBar.hidden=YES;

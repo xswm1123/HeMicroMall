@@ -209,12 +209,10 @@
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     NSLog(@"scrollViewWillBeginDragging");
-//    if (isAutoPlay) {
         if (timer!=nil) {
             [timer invalidate];
             timer=nil;
         }
-//    }
 }
 // 定时器 绑定的方法
 - (void)runTimePage
@@ -320,8 +318,6 @@
     self.tabBarController.tabBar.hidden=YES;
     [self performSegueWithIdentifier:@"scanQR" sender:nil];
 }
-- (IBAction)showShakeView:(id)sender {
-}
 - (IBAction)discountActivityAction:(id)sender {
     self.tabBarController.tabBar.hidden=YES;
     [self performSegueWithIdentifier:@"discount" sender:nil];
@@ -332,7 +328,6 @@
     [MBProgressHUD showHUDAddedTo:self.scrollView animated:YES];
     AdvertisingContentRequest* request=[[AdvertisingContentRequest alloc]init];
     [SystemAPI AdvertisingContentRequest:request success:^(AdvertisingContentResponse *response) {
-        
         self.lists=response.list;
         if (self.lists.count>0) {
             for (NSDictionary* adList in self.lists) {
@@ -350,7 +345,6 @@
                 NSLog(@"arr_title:%@",[dic objectForKey:@"title"]);
             }
         }
-        
         if (self.images.count>0) {
             [self initViewAndLoadImages];
             [self loadTitleAndContentAtIndex:0];

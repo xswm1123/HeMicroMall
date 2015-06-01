@@ -17,13 +17,13 @@
 //发布ID  com.ChinaMobile.HeMircoMall
 
 //测试环境
-//#define BASE_SERVERLURL @"http://202.101.116.65/"
+//#define BASE_SERVERLURL @"http://202.101.116.84/"
 //生产环境
-//#define BASE_SERVERLURL @"http://218.205.252.26:9003/"
+#define BASE_SERVERLURL @"http://218.205.252.26:9003/"
 //业支测试环境
 //#define BASE_SERVERLURL @"http://218.205.252.22/"
 //业支预上线环境
-#define BASE_SERVERLURL @"http://218.205.252.26/"
+//#define BASE_SERVERLURL @"http://218.205.252.26/"
 
 
 //// 图片上传路径
@@ -55,6 +55,7 @@
 #define URL_GET_LAUNCH_ADS @"api/mobile/ad/getAds.shtml"//获取启动页面广告
 #define URL_GET_CUSTOMERCENTER_MENUS @"api/mobile/feedback/getCenterMenu.shtml"//获取个人中心菜单
 #define URL_SUBMMIT_CID @"api/mobile/getui/bindGeTuiCid.shtml"//绑定推送CID
+#define URL_FIND_OFFER_MALL_SALEINFO @"api/mobile/goods/findOfferMallSaleInfo.shtml"//商品详情
 
 #define URL_uploadPhoto @"uploadPhoto.shtml" //照片上传
 

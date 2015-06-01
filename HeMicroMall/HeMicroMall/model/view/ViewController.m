@@ -33,18 +33,11 @@ static NSUInteger count=30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"和品会微店测试版";
+    self.title=@"和品会微店";
     self.checkBtn.titleLabel.text=@"获取验证码";
     self.tf_phoneNumber.delegate=self;
     self.tf_randomNumber.delegate=self;
 }
-//-(void)viewDidLayoutSubviews{
-//    struct utsname systemInfo;
-//    uname(&systemInfo);
-//    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-//    NSLog(@"deviceString:%@",deviceString);
-//    
-//}
 
 -(BOOL)isRightNumber{
     BOOL isRight = false;

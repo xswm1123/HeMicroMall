@@ -52,7 +52,6 @@
     [self showLoginView];
     [self checkUpdateState];
     [self registerRemoteNotification];
-    
      [self.window makeKeyAndVisible];
     return YES;
 }

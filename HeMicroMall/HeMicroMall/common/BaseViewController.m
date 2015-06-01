@@ -148,6 +148,13 @@ static BaseViewController* _bvc;
 #pragma wkwebview_delegate
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     NSLog(@"WK网页加载成功！");
+    if(self.webView) {
+        self.navigationItem.title = self.webView.title;
+    }
+    else if(self.uiWebView) {
+        self.navigationItem.title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
     
@@ -296,10 +303,10 @@ static BaseViewController* _bvc;
         }
     }
 }
-//- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler{
-//    NSLog(@"didReceiveAuthenticationChallenge");
-//    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling,);
-//}
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler{
+    NSLog(@"didReceiveAuthenticationChallenge");
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling,nil);
+}
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
     NSLog(@"didCommitNavigation");
 }
@@ -317,6 +324,13 @@ static BaseViewController* _bvc;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSLog(@"UI网页加载成功！");
+    if(self.webView) {
+        self.navigationItem.title = self.webView.title;
+    }
+    else if(self.uiWebView) {
+        self.navigationItem.title = [self.uiWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
@@ -332,9 +346,7 @@ static BaseViewController* _bvc;
             self.tabBarController.hidesBottomBarWhenPushed=YES;
             self.tabBarController.tabBar.hidden=YES;
             [self.navigationController pushViewController:vc animated:YES];
-            
         }
-
     }
     return YES;
 }
