@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>wt_dc_charge_threshold_minimum</key>
+	<integer>30</integer>
+	<key>wt_dc_event_table_size_maximum</key>
+	<integer>10000</integer>
+	<key>wt_dc_timezone</key>
+	<integer>-8</integer>
+	<key>wt_dc_session_maximum</key>
+	<integer>480</integer>
+	<key>wt_dc_app_name</key>
+	<string>和品会微店</string>
+	<key>wt_dc_debug</key>
+	<false/>
+	<key>wt_dc_use_uncaught_exception_handler</key>
+	<false/>
+	<key>wt_dc_dcsid</key>
+	<string>dcs4v2va4100004rjs5mrb6ak_2t9o</string>
+	<key>wt_dc_event_retry_maximum</key>
+	<integer>5</integer>
+	<key>wt_dc_session_timeout</key>
+	<integer>30</integer>
+	<key>wt_dc_app_version</key>
+	<string>1.2.1</string>
+	<key>wt_dc_app_publisher</key>
+	<string>四川移动</string>
+	<key>wt_dc_url</key>
+	<string>http://223.87.19.88/dcs4v2va4100004rjs5mrb6ak_2t9o/dcs.gif</string>
+	<key>wt_dc_id_method</key>
+	<string>vendor_id</string>
+	<key>wt_dc_enabled</key>
+	<true/>
+	<key>wt_dc_app_category</key>
+	<string>O2O</string>
+</dict>
+</plist>

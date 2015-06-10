@@ -33,6 +33,9 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation) userInfo:nil repeats:YES];
 
 }
+/**
+ *  扫描动画
+ */
 -(void)animation
 {
     if (upOrdown == NO) {
@@ -184,10 +187,7 @@
         UIAlertView* al=[[UIAlertView alloc]initWithTitle:@"提示" message:@"当前二维码非和品会二维码!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         al.tag=101;
         [al show];
-        
     }
-    
-    
 }
 //判断是否是正确的二维码地址
 -(BOOL)isValidateWebSite:(NSString *)webSite

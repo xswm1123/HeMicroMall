@@ -58,6 +58,9 @@
     }
     return _contents;
 }
+/**
+ *  初始化界面和加载广告图片
+ */
 -(void)initViewAndLoadImages{
     //config scrollView
      self.scrollView.bounces = NO;
@@ -116,7 +119,11 @@
         }
     }
 }
-
+/**
+ *  点击广告图片跳转加载网页页面
+ *
+ *  @param
+ */
 -(void)showWebView:(UITapGestureRecognizer*) tapGesture{
     
     id obj=tapGesture.view;
@@ -269,13 +276,19 @@
    }];
     
 }
+/**
+ *  加载广告标题
+ *
+ *  @param index
+ */
 -(void)loadTitleAndContentAtIndex:(NSInteger) index{
     NSDictionary* list=[self.totalContents objectAtIndex:index];
     self.adTitle.text=[list objectForKey:@"title"];
     self.adContent.text=[list objectForKey:@"remark"];
 }
-
-//=============================//
+/**
+ *  检查店铺 绑定抓状态
+ */
 -(void)checkPiidState{
     if ([[shareValue shareInstance].PIID isEqualToString:@""]) {
         [self showShadowView];
@@ -292,6 +305,9 @@
         }
     }
 }
+/**
+ *  暂时未用
+ */
 -(void)showShadowView{
     self.imv=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.imv.image=[UIImage imageNamed:@"mask.png"];
@@ -322,9 +338,13 @@
     self.tabBarController.tabBar.hidden=YES;
     [self performSegueWithIdentifier:@"discount" sender:nil];
 }
+/**
+ *  加载滚广告图
+ */
 -(void)loadAdvertisingImage{
     self.totalContents=nil;
     self.totalContents=[NSMutableArray array];
+//    __weak typeof(self) weakSelf=self;
     [MBProgressHUD showHUDAddedTo:self.scrollView animated:YES];
     AdvertisingContentRequest* request=[[AdvertisingContentRequest alloc]init];
     [SystemAPI AdvertisingContentRequest:request success:^(AdvertisingContentResponse *response) {

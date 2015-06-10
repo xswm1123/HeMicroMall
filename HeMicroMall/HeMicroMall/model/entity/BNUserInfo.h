@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ *  此实体类，暂时用不到
+ */
 @interface BNUserInfo : NSObject
 @property  (nonatomic,strong) NSString * PIID;//piid
 @property (nonatomic,strong) NSString * TOKEN; //token

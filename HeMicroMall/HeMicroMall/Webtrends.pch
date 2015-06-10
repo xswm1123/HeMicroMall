@@ -1,0 +1,15 @@
+//
+//  Webtrends.pch
+//  HeMicroMall
+//
+//  Created by Anita Lee on 15/6/9.
+//  Copyright (c) 2015年 NewDoone. All rights reserved.
+//
+
+#ifndef HeMicroMall_Webtrends_pch
+#define HeMicroMall_Webtrends_pch
+#import <Webtrends/Webtrends.h>
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

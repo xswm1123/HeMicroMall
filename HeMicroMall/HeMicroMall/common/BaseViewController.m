@@ -70,6 +70,11 @@ static BaseViewController* _bvc;
     }
 
 }
+/**
+ *  IOS7的API和JS的交互
+ *
+ *  @return nil;
+ */
 #pragma 注册JS与OC的交互
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -181,6 +186,11 @@ static BaseViewController* _bvc;
     }
     
 }
+/**
+ *  IOS8 JS与OC的交互
+ *
+ *  @return
+ */
 #pragma JS与OC的交互
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     NSLog(@"message:%@",message.body);
